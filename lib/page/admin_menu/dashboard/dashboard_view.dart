@@ -1,4 +1,5 @@
 import 'package:catering_admin/page/add_food/add_food.dart';
+import 'package:catering_admin/widget/custom_widget.dart';
 import 'package:flutter/material.dart';
 
 class DashboardView extends StatelessWidget {
@@ -10,15 +11,38 @@ class DashboardView extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Center(
-            child: FlatButton(
-              child: Text('Tambah Menu'),
+            child: CustomButton(
+              buttonText: 'Tambah Menu',
               onPressed: () {
-                Navigator.pushNamed(context, AddFood.PATH);
+                _showBottomSheetAddMenu(context);
               },
             ),
           )
         ],
       ),
     );
+  }
+
+  void _showBottomSheetAddMenu(BuildContext context) {
+    showModalBottomSheet(
+        context: context,
+        builder: (BuildContext context) {
+          return Container(
+            child: Wrap(
+              children: <Widget>[
+                ListTile(
+                  leading: Icon(Icons.music_note),
+                  title: Text('Music'),
+                  onTap: () {},
+                ),
+                ListTile(
+                  leading: Icon(Icons.videocam),
+                  title: Text('Video'),
+                  onTap: () {},
+                ),
+              ],
+            ),
+          );
+        });
   }
 }
