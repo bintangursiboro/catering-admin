@@ -8,7 +8,7 @@ abstract class FoodListState extends Equatable {
 class FoodListInitial extends FoodListState {}
 
 class FoodListLoaded extends FoodListState {
-  final List<FoodListData> foodListData;
+  final List<MenuMakanan> foodListData;
   FoodListLoaded({this.foodListData}) : super([foodListData]);
 }
 

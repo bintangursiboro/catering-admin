@@ -2,7 +2,7 @@ import 'package:catering_admin/page/admin_menu/food_list/data/food_list_data.dar
 import 'package:flutter/material.dart';
 
 class FoodListView extends StatelessWidget {
-  final List<FoodListData> foodList;
+  final List<MenuMakanan> foodList;
 
   FoodListView({
     this.foodList,
@@ -17,7 +17,7 @@ class FoodListView extends StatelessWidget {
         crossAxisCount: 2,
         children: List.generate(foodList.length, (index) {
           return Center(
-            child: Text('Item ${foodList[index].nama}'),
+            child: Text('Item ${foodList[index].namaMakanan}'),
           );
         }),
       ),
