@@ -1,11 +1,16 @@
-class FoodListData {
-  String gambar;
-  num harga;
-  String nama;
+class MenuMakanan {
+  String fotoMakanan;
+  num hargaAwal;
+  String namaMakanan;
+  num id;
+  String tipeCatering;
 
-  FoodListData.fromJson(Map<String, dynamic> json) {
-    if (json['gambar'] != null) gambar = json['gambar'] ?? '';
-    if (json['harga'] != null) harga = json['harga'] ?? 0;
-    if (json['nama'] != null) nama = json['nama'] ?? '';
+  MenuMakanan.fromJson(Map<String, dynamic> json) {
+    if (json['foto_makanan'] != null) fotoMakanan = json['gambar'] ?? '';
+    if (json['harga_awal'] != null) hargaAwal = json['harga'] ?? 0;
+    if (json['nama_makanan'] != null) namaMakanan = json['nama'] ?? '';
+    if (json['id'] != null) id = json['id'] ?? -1;
+    if (json['tipe_catering'] != null)
+      tipeCatering = json['tipe_catering'] ?? '';
   }
 }
