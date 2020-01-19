@@ -1,10 +1,10 @@
-# catering_admin
+# Catering Admin
 
 A Personal Project for helping my mom to get esier for managing catering order.
 
 ## Getting Started
 
-This project is serverless application, I use Firebase as my server for saving data, such database.
+This project is serverless application for Admin Catering, I use Firebase as my server for saving data, such database.
 
 Using:
   - BLoC
