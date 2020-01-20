@@ -36,6 +36,8 @@ class _FoodListState extends State<FoodList> {
         builder: (BuildContext context, FoodListState state) {
           return FoodListView(
             foodList: (state is FoodListLoaded) ? state.foodListData : [],
+            isError: (state is FoodListError),
+            isLoading: (state is FoodListLoading),
           );
         },
       ),

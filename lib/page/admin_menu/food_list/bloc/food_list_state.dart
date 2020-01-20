@@ -13,3 +13,5 @@ class FoodListLoaded extends FoodListState {
 }
 
 class FoodListLoading extends FoodListState {}
+
+class FoodListError extends FoodListState {}
