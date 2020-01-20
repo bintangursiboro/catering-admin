@@ -17,7 +17,7 @@ environment:
   sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
-  equatable: ^0.2.0
+  equatable: ^1.0.2
   bloc: ^2.0.0
   flutter_bloc: ^2.0.0
   firebase_core: ^0.4.0
@@ -25,6 +25,8 @@ dependencies:
   cloud_firestore: ^0.12.10
   firebase_messaging: ^5.1.8
   firebase_storage: ^3.0.8
+  flutter_money_formatter: ^0.8.3
+
   flutter:
     sdk: flutter
 

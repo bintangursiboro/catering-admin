@@ -22,8 +22,20 @@ class FoodListView extends StatelessWidget {
           ? GridView.count(
               crossAxisCount: 2,
               children: List.generate(foodList.length, (index) {
-                return GridMenu(
-                  menuMakanan: foodList[index],
+                return Card(
+                  color: Colors.white,
+                  child: Center(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: <Widget>[
+                        Expanded(
+                          child: Image.network(foodList[index].fotoMakanan),
+                        ),
+                        Text(foodList[index].namaMakanan)
+                      ],
+                    ),
+                  ),
                 );
               }),
             )

@@ -1,12 +1,21 @@
-import 'package:catering_admin/page/add_food/add_food.dart';
 import 'package:catering_admin/widget/custom_widget.dart';
 import 'package:flutter/material.dart';
 
 class DashboardView extends StatelessWidget {
   final VoidCallback onPressedTambahMenu;
+  final TextEditingController namaMenuMakananController;
+  final TextEditingController hargaAwalController;
+  final Function(String) onChangedHargaAwal;
+  final Function onEditingComplete;
+  final Function onTapHargaAwal;
 
   DashboardView({
     this.onPressedTambahMenu,
+    this.hargaAwalController,
+    this.namaMenuMakananController,
+    this.onChangedHargaAwal,
+    this.onEditingComplete,
+    this.onTapHargaAwal,
   });
 
   @override
@@ -28,6 +37,7 @@ class DashboardView extends StatelessWidget {
                 borderSide: BorderSide(color: Colors.blue),
               ),
             ),
+            controller: namaMenuMakananController,
           ),
           SizedBox(
             height: 10,
@@ -43,21 +53,13 @@ class DashboardView extends StatelessWidget {
                 borderSide: BorderSide(color: Colors.blue),
               ),
             ),
+            keyboardType: TextInputType.number,
+            onEditingComplete: onEditingComplete,
+            controller: hargaAwalController,
+            onTap: onTapHargaAwal,
           ),
           SizedBox(
             height: 10,
-          ),
-          TextField(
-            decoration: InputDecoration(
-              hintText: 'Tipe Catering',
-              alignLabelWithHint: true,
-              border: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.lightGreen),
-              ),
-              enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.blue),
-              ),
-            ),
           ),
           SizedBox(
             height: 10,
