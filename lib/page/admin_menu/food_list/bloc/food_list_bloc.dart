@@ -16,7 +16,9 @@ class FoodListBloc extends Bloc<FoodListEvent, FoodListState> {
         yield await foodListService.getFoodList().then((model) {
           return FoodListLoaded(foodListData: model);
         });
-      } catch (e) {}
+      } catch (e) {
+        yield FoodListError();
+      }
     }
   }
 }

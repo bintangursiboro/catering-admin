@@ -1,3 +1,4 @@
+import 'package:catering_admin/page/admin_menu/food_list/data/food_list_data.dart';
 import 'package:flutter/material.dart';
 
 class CustomButton extends StatelessWidget {
@@ -13,11 +14,12 @@ class CustomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return RawMaterialButton(
       onPressed: onPressed,
-      shape: const StadiumBorder(),
+      shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(5))),
       fillColor: Colors.lightBlue,
       splashColor: Colors.lightBlueAccent,
       child: Padding(
-        padding: EdgeInsets.all(10.0),
+        padding: EdgeInsets.all(15.0),
         child: Row(
           children: <Widget>[
             Icon(
@@ -37,4 +39,60 @@ class CustomButton extends StatelessWidget {
       ),
     );
   }
+}
+
+class GridMenu extends StatelessWidget {
+  final MenuMakanan menuMakanan;
+
+  GridMenu({
+    this.menuMakanan,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      color: Colors.white,
+      child: Center(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            Expanded(
+              child: Image.network(menuMakanan.fotoMakanan),
+            ),
+            Text(menuMakanan.namaMakanan)
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+Widget showLoadingProgress() {
+  return Container(
+    margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
+    child: Column(
+      children: <Widget>[
+        CircularProgressIndicator(),
+        Text(
+          'Memuat Data, Mohon Tunggu...',
+          style: TextStyle(
+            color: Colors.lightBlue,
+          ),
+        )
+      ],
+    ),
+  );
+}
+
+Widget showErrorTextWidget() {
+  return Container(
+    margin: EdgeInsets.fromLTRB(10, 10, 10, 10),
+    child: Center(
+      child: Text(
+        'Maaf Terjadi Kesalahan',
+        style: TextStyle(color: Colors.lightBlue),
+      ),
+    ),
+  );
 }

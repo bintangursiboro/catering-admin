@@ -1,7 +1,12 @@
 import 'package:equatable/equatable.dart';
 
-abstract class FoodListEvent extends Equatable {
-  FoodListEvent([List props = const []]) : super([props]);
+class FoodListEvent extends Equatable {
+  @override
+  List<Object> get props => null;
+
+  final mProps;
+
+  FoodListEvent([this.mProps = const []]);
 }
 
 class GetFoodListEvent extends FoodListEvent {}
