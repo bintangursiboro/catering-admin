@@ -15,3 +15,10 @@ class CurrencyLoaded extends DashboardState {
   final FlutterMoneyFormatter formatter;
   CurrencyLoaded({this.formatter}) : super([formatter]);
 }
+
+class DashboardError extends DashboardState {}
+
+class DashboardText extends DashboardState {
+  final bool isValid;
+  DashboardText({this.isValid}) : super([isValid]);
+}

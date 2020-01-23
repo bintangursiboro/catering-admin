@@ -12,3 +12,5 @@ class ChangeCurrency extends DashboardEvent {
   final double harga;
   ChangeCurrency({this.harga}) : super([harga]);
 }
+
+class OpenCamera extends DashboardEvent {}
