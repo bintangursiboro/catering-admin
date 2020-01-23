@@ -8,6 +8,8 @@ class DashboardView extends StatelessWidget {
   final Function(String) onChangedHargaAwal;
   final Function onEditingComplete;
   final Function onTapHargaAwal;
+  final Function(String) onChangedMenuMakanan;
+  final Function onOpenCamera;
 
   DashboardView({
     this.onPressedTambahMenu,
@@ -16,6 +18,8 @@ class DashboardView extends StatelessWidget {
     this.onChangedHargaAwal,
     this.onEditingComplete,
     this.onTapHargaAwal,
+    this.onChangedMenuMakanan,
+    this.onOpenCamera,
   });
 
   @override
@@ -38,6 +42,7 @@ class DashboardView extends StatelessWidget {
               ),
             ),
             controller: namaMenuMakananController,
+            onChanged: onChangedMenuMakanan,
           ),
           SizedBox(
             height: 10,
@@ -60,6 +65,19 @@ class DashboardView extends StatelessWidget {
           ),
           SizedBox(
             height: 10,
+          ),
+          Text('Upload Foto Makanan'),
+          SizedBox(
+            height: 10,
+          ),
+          Container(
+            height: 150,
+            child: ListMenuFoto(
+              listImage: [],
+              openCamera: () {
+                onOpenCamera();
+              },
+            ),
           ),
           SizedBox(
             height: 10,

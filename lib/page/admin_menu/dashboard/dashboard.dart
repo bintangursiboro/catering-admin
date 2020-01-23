@@ -1,4 +1,5 @@
 import 'package:catering_admin/page/admin_menu/dashboard/bloc/dashboard_bloc.dart';
+import 'package:catering_admin/page/admin_menu/dashboard/bloc/dashboard_event.dart';
 import 'package:catering_admin/page/admin_menu/dashboard/bloc/dashboard_state.dart';
 import 'package:catering_admin/page/admin_menu/dashboard/dashboard_view.dart';
 import 'package:catering_admin/utility/formatter/formatter.dart';
@@ -35,11 +36,16 @@ class _DashboardState extends State<Dashboard> {
           namaMenuMakananController: _namaMakananController,
           onChangedHargaAwal: _onChangedHargaAwal,
           onPressedTambahMenu: _tambahMenu,
-          onEditingComplete: _onEditingHargaAwalComplete(),
-          onTapHargaAwal: _onTapHargaAwal(),
+          onOpenCamera: _onOpenCamera,
+          // onEditingComplete: _onEditingHargaAwalComplete(),
+          // onTapHargaAwal: _onTapHargaAwal(),
         );
       },
     );
+  }
+
+  _onOpenCamera() {
+    _bloc.add(OpenCamera());
   }
 
   _onChangedHargaAwal(String hargaAwal) {
