@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:catering_admin/page/admin_menu/dashboard/bloc/dashboard_bloc.dart';
 import 'package:catering_admin/page/admin_menu/dashboard/bloc/dashboard_event.dart';
 import 'package:catering_admin/page/admin_menu/dashboard/bloc/dashboard_state.dart';
@@ -19,6 +21,7 @@ class _DashboardState extends State<Dashboard> {
   String _namaMenuMakanan;
   DashboardBloc _bloc;
   VoidCallback _tambahMenu = () {};
+  List<Uint8List> listImage = [];
 
   @override
   void initState() {
@@ -28,18 +31,27 @@ class _DashboardState extends State<Dashboard> {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder(
+    return BlocListener(
       bloc: _bloc,
-      builder: (BuildContext context, DashboardState state) {
-        return DashboardView(
-          hargaAwalController: _hargaAwalController,
-          namaMenuMakananController: _namaMakananController,
-          onChangedHargaAwal: _onChangedHargaAwal,
-          onPressedTambahMenu: _tambahMenu,
-          onOpenCamera: _onOpenCamera,
-          // onEditingComplete: _onEditingHargaAwalComplete(),
-          // onTapHargaAwal: _onTapHargaAwal(),
-        );
+      child: BlocBuilder(
+        bloc: _bloc,
+        builder: (BuildContext context, DashboardState state) {
+          return DashboardView(
+            hargaAwalController: _hargaAwalController,
+            namaMenuMakananController: _namaMakananController,
+            onChangedHargaAwal: _onChangedHargaAwal,
+            onPressedTambahMenu: _tambahMenu,
+            onOpenCamera: _onOpenCamera,
+            listImage: listImage,
+          );
+        },
+      ),
+      listener: (BuildContext context, DashboardState state) {
+        if (state is DashboardPhotoLoaded) {
+          setState(() {
+            listImage = state.listImage;
+          });
+        }
       },
     );
   }

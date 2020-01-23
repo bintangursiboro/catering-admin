@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:bloc/bloc.dart';
 import 'package:catering_admin/page/admin_menu/dashboard/bloc/dashboard_event.dart';
 import 'package:catering_admin/page/admin_menu/dashboard/bloc/dashboard_state.dart';
@@ -5,6 +7,7 @@ import 'package:catering_admin/page/admin_menu/dashboard/service/dashboard_platf
 import 'package:flutter/services.dart';
 
 class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
+  List<Uint8List> _listImge = [];
   @override
   DashboardState get initialState => DashboardInitial();
 
@@ -14,7 +17,11 @@ class DashboardBloc extends Bloc<DashboardEvent, DashboardState> {
 
     if (event is OpenCamera) {
       try {
-        await _platformService.openCamera();
+        yield await _platformService.openCamera().then((image) {
+          print('listImage ${_listImge.length}');
+          _listImge.add(image);
+          return DashboardPhotoLoaded(listImage: _listImge);
+        });
         yield DashboardInitial();
       } on PlatformException catch (_) {
         yield DashboardError();

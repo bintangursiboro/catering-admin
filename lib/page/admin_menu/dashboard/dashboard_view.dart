@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:catering_admin/widget/custom_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -10,6 +12,7 @@ class DashboardView extends StatelessWidget {
   final Function onTapHargaAwal;
   final Function(String) onChangedMenuMakanan;
   final Function onOpenCamera;
+  final List<Uint8List> listImage;
 
   DashboardView({
     this.onPressedTambahMenu,
@@ -20,6 +23,7 @@ class DashboardView extends StatelessWidget {
     this.onTapHargaAwal,
     this.onChangedMenuMakanan,
     this.onOpenCamera,
+    this.listImage,
   });
 
   @override
@@ -73,7 +77,7 @@ class DashboardView extends StatelessWidget {
           Container(
             height: 150,
             child: ListMenuFoto(
-              listImage: [],
+              listImage: listImage,
               openCamera: () {
                 onOpenCamera();
               },

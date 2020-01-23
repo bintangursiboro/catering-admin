@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:equatable/equatable.dart';
 import 'package:flutter_money_formatter/flutter_money_formatter.dart';
 
@@ -18,7 +20,7 @@ class CurrencyLoaded extends DashboardState {
 
 class DashboardError extends DashboardState {}
 
-class DashboardText extends DashboardState {
-  final bool isValid;
-  DashboardText({this.isValid}) : super([isValid]);
+class DashboardPhotoLoaded extends DashboardState {
+  final List<Uint8List> listImage;
+  DashboardPhotoLoaded({this.listImage}) : super([listImage]);
 }

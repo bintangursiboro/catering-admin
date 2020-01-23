@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:flutter/services.dart';
 
 class DashboardPlatformService {
@@ -5,7 +7,7 @@ class DashboardPlatformService {
   static const METHOD = 'openCamera';
   static const _platform = const MethodChannel(PLATFORM);
 
-  Future<String> openCamera() async {
+  Future<Uint8List> openCamera() async {
     return await _platform.invokeMethod(METHOD).then((result) {
       print('$result');
       return result;

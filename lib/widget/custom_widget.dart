@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:catering_admin/page/admin_menu/food_list/data/food_list_data.dart';
 import 'package:flutter/material.dart';
 
@@ -98,7 +100,7 @@ Widget showErrorTextWidget() {
 }
 
 class ListMenuFoto extends StatefulWidget {
-  final List<String> listImage;
+  final List<Uint8List> listImage;
   final Function openCamera;
 
   ListMenuFoto({this.listImage, this.openCamera});
@@ -110,36 +112,46 @@ class ListMenuFoto extends StatefulWidget {
 class _ListMenuFotoState extends State<ListMenuFoto> {
   @override
   Widget build(BuildContext context) {
-    return (widget.listImage.length == 0)
-        ? ListView.builder(
-            scrollDirection: Axis.horizontal,
-            itemCount: widget.listImage.length + 1,
-            itemBuilder: (BuildContext context, int index) {
-              return (index == widget.listImage.length)
-                  ? GestureDetector(
-                      onTap: widget.openCamera,
-                      child: Container(
-                        height: 150,
-                        width: 150,
-                        child: Icon(
-                          Icons.camera_alt,
-                          size: 50.0,
-                          color: Colors.lightBlue,
-                        ),
-                        decoration: BoxDecoration(
-                            borderRadius:
-                                BorderRadius.all(Radius.circular(5.0)),
-                            border: Border.all(
-                              color: Colors.lightBlue,
-                              width: 1,
-                            )),
-                      ),
-                    )
-                  : Padding(
-                      padding: EdgeInsets.all(10.0),
-                    );
-            },
-          )
-        : ListView();
+    return ListView.builder(
+      scrollDirection: Axis.horizontal,
+      itemCount: widget.listImage.length + 1,
+      itemBuilder: (BuildContext context, int index) {
+        return (index == widget.listImage.length)
+            ? GestureDetector(
+                onTap: widget.openCamera,
+                child: Container(
+                  height: 150,
+                  width: 150,
+                  child: Icon(
+                    Icons.camera_alt,
+                    size: 50.0,
+                    color: Colors.lightBlue,
+                  ),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                      border: Border.all(
+                        color: Colors.lightBlue,
+                        width: 1,
+                      )),
+                ),
+              )
+            : Container(
+                margin: EdgeInsets.only(left: 5, right: 5),
+                height: 150,
+                width: 150,
+                child: Image.memory(
+                  widget.listImage[index],
+                  fit: BoxFit.fill,
+                ),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.all(Radius.circular(5.0)),
+                  border: Border.all(
+                    color: Colors.lightBlue,
+                    width: 1,
+                  ),
+                ),
+              );
+      },
+    );
   }
 }

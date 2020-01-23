@@ -32,7 +32,7 @@ class MainActivity: FlutterActivity() {
 
   override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
     if (resultCode == Activity.RESULT_OK){
-
+      cameraChannel.loadImageUri()
     }
   }
 }
